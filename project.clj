@@ -6,6 +6,7 @@
             :year 2015
             :key "mit"}
   :dependencies [[org.clojure/clojure "1.6.0"]
+                 [org.clojure/algo.generic "0.1.2"]
                  [tentacles "0.3.0"]]
   :main ^:skip-aot clj-github-issues.core
   :target-path "target/%s"

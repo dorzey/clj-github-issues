@@ -2,7 +2,8 @@
   (:gen-class)
   (:use [clj-github-issues.config :as config]
         [clj-github-issues.api :as api]
-        [clj-github-issues.group :as group]))
+        [clj-github-issues.group :as group]
+        [clj-github-issues.output :as output]))
 
 (defn -main
   [& args]
@@ -15,5 +16,5 @@
         oauth-token (:oauth-token loaded-config)
         issues (api/get-issues {:Type (first args)} user repo oauth-token)
         grouped-issues (group/group-issues-by issues labels)]
-    (println grouped-issues)
+    (output/print-issues grouped-issues)
     ))
