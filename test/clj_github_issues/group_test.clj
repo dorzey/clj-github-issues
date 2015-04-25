@@ -1,6 +1,6 @@
-(ns clj-github-issues.sort-test
+(ns clj-github-issues.group-test
   (:require [clojure.test :refer :all]
-            [clj-github-issues.sort :refer :all :as sort]))
+            [clj-github-issues.group :refer :all :as sort]))
 
 (deftest get-labels-test
   (testing "getting labels at top level"
@@ -30,12 +30,16 @@
 (def list-of-issues [{:labels [{:name "a"}]}
                      {:labels [{:name "a"}, {:name "b"}]}
                      {:labels [{:name "b"}, {:name "c"}]}
-                     {:labels [{:name "c"}]}])
+                     {:labels [{:name "d"}]}])
 
-(deftest sort-issues-by-test
-  (testing "get three groups when give three labels"
-    (is (= 3
-           (count (sort/sort-issues-by list-of-issues ["a" "b" "c"])))))
-  (testing "get one group when give one group"
-    (is (= 1
-           (count (sort/sort-issues-by list-of-issues ["a"]))))))
+(deftest group-issues-by-test
+  (let [ret (sort/group-issues-by list-of-issues ["a" "b" "c" "d"])]
+    (testing "the 'a' group has two"
+      (is (= 2 (count (get ret "a")))))
+    (testing "the 'b' group has two"
+      (is (= 2 (count (get ret "b")))))
+    (testing "the 'c' group has one"
+      (is (= 1 (count (get ret "c")))))
+    (testing "the 'd' group has one"
+      (is (= 1 (count (get ret "d")))))))
+      

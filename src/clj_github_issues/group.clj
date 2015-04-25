@@ -1,4 +1,4 @@
-(ns clj-github-issues.sort)
+(ns clj-github-issues.group)
 
 (defn- get-labels [issue]
   (get-in issue [:labels]))
@@ -13,6 +13,7 @@
 (defn- return-if-has [issue label]
   (if (has? issue label) issue))
 
-(defn sort-issues-by [issues labels]
-  (for [label labels]
-    (filter identity (map #(return-if-has % label) issues))))
+(defn group-issues-by [issues labels]
+  (into {} (let [ret nil]
+    (for [label labels]
+      (assoc ret (str label) (filter identity (map #(return-if-has % label) issues)))))))
