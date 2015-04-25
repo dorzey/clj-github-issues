@@ -13,7 +13,7 @@
         repo (:repo loaded-config)
         labels (:labels loaded-config)
         oauth-token (:oauth-token loaded-config)
-        issues (api/get-repo-issues user repo oauth-token)
+        issues (api/get-issues {:Type (first args)} user repo oauth-token)
         grouped-issues (group/group-issues-by issues labels)]
     (println grouped-issues)
     ))
