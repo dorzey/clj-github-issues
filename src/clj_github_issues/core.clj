@@ -11,10 +11,11 @@
         private-config (clojure.java.io/resource "config-private.edn")
         loaded-config (config/load-and-merge public-config private-config)
         user (:user loaded-config)
-        repo (:repo loaded-config)
+        repos (:repo loaded-config)
         labels (:labels loaded-config)
         oauth-token (:oauth-token loaded-config)
-        issues (api/get-issues {:Type (first args)} user repo oauth-token)
+        type {:Type (first args)}
+        issues (flatten (map #(api/get-issues type user % oauth-token) repos))
         grouped-issues (group/group-issues-by issues labels)]
     (output/print-issues labels grouped-issues user)
     ))

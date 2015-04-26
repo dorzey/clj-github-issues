@@ -1,3 +1,3 @@
 {:user "dorzey"
- :repo "clj-github-issues"
+ :repo ["clj-github-issues"]
  :labels ["bug" "enhancement" "duplicate" "help wanted"]}
