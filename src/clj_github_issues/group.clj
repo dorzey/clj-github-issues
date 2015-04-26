@@ -16,4 +16,5 @@
 (defn group-issues-by [issues labels]
   (into {} (let [ret nil]
     (for [label labels]
-      (assoc ret (str label) (filter identity (map #(return-if-has % label) issues)))))))
+      (assoc ret (str label)
+             (filter identity (map #(return-if-has % label) issues)))))))

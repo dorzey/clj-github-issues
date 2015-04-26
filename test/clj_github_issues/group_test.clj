@@ -42,4 +42,3 @@
       (is (= 1 (count (get ret "c")))))
     (testing "the 'd' group has one"
       (is (= 1 (count (get ret "d")))))))
-      

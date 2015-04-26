@@ -25,5 +25,6 @@
 (deftest table-pretty-test
   (let [res  (#'output/table-pretty group-of-issues "")]
     (testing "output is ammenable tp being used by print table"
-      (is (= [{"a" "one-url"} {"a" "two-url"} {"b" "two-url"} {"b" "three-url"} {"c" "three-url"} {"d" "four-url"}]
+      (is (= [{"a" "one-url"} {"a" "two-url"} {"b" "two-url"}
+              {"b" "three-url"} {"c" "three-url"} {"d" "four-url"}]
              res)))))

@@ -12,4 +12,3 @@
   (get-repo-issues user repo oauth-token))
 (defmethod get-issues ["pr"] [x user repo oauth-token]
   (get-repo-prs user repo oauth-token))
-
