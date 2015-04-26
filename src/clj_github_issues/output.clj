@@ -16,10 +16,10 @@
    user ""))
 
 (defn- flatten-value-lists [entry user]
-  (into []
-        (for [a-key (keys entry)]
-          (for [value (get entry a-key)]
-            {a-key (tidy-url value user)}))))
+  (vec
+   (for [a-key (keys entry)]
+     (for [value (get entry a-key)]
+       {a-key (tidy-url value user)}))))
 
 (defn- table-pretty [issue-groups user]
   (flatten
