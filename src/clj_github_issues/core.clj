@@ -16,5 +16,5 @@
         oauth-token (:oauth-token loaded-config)
         issues (api/get-issues {:Type (first args)} user repo oauth-token)
         grouped-issues (group/group-issues-by issues labels)]
-    (output/print-issues grouped-issues)
+    (output/print-issues labels grouped-issues)
     ))
