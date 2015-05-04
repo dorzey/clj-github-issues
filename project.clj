@@ -7,9 +7,12 @@
             :key "mit"}
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [org.clojure/algo.generic "0.1.2"]
-                 [tentacles "0.3.0"]]
+                 [tentacles "0.3.0"]
+                 [compojure "1.3.1"]]
   :main ^:skip-aot clj-github-issues.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}
              :dev {:resource-paths ["resources/dev"]}
-             :prod {:resource-paths ["resources/prod"]}})
+             :prod {:resource-paths ["resources/prod"]}}
+  :plugins [[lein-ring "0.9.3"]]
+  :ring {:handler clj-github-issues.handler/app})
