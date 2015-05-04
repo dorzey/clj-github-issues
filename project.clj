@@ -8,7 +8,8 @@
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [org.clojure/algo.generic "0.1.2"]
                  [tentacles "0.3.0"]
-                 [compojure "1.3.1"]]
+                 [compojure "1.3.1"]
+                 [ring/ring-json "0.3.1"]]
   :main ^:skip-aot clj-github-issues.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}
